@@ -1,0 +1,235 @@
+@import 'variables';
+@import 'mixins';
+
+.landing {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: $bgColor;
+  color: $fontColor;
+  overflow: hidden;
+
+  .logoImage {
+    position: absolute;
+    left: 1vw;
+    top: 1vh;
+    width: 4vw;
+    height: 8vh;
+  }
+
+  .logoText {
+    position: relative;
+    left: 6vw;
+    top: 1vh;
+    width: 30vw;
+
+    h2 {
+      position: absolute;
+      font-size: 6vmin;
+      font-family: $titleFont;
+
+      &:nth-child(1) {
+        color: transparent;
+        -webkit-text-stroke: .1vmin $primaryColor;
+      }
+
+      &:nth-child(2) {
+        background-color: $primaryColor;
+        background: linear-gradient(180deg, rgba(96, 16, 153, 1) 50%, rgba(53, 16, 255, 1) 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: animate 4s ease-in-out infinite;
+      }
+    }
+
+    @keyframes animate {
+
+      0%,
+      100% {
+        clip-path: polygon(0% 45%, 15% 44%, 32% 50%,
+            54% 60%, 70% 61%, 84% 59%, 100% 52%,
+            100% 100%, 0% 100%);
+      }
+
+      50% {
+        clip-path: polygon(0% 60%, 16% 65%, 34% 66%,
+            51% 62%, 67% 50%, 84% 45%, 100% 46%,
+            100% 100%, 0% 100%);
+      }
+    }
+  }
+
+  .accessBtns {
+    position: absolute;
+    right: 1vw;
+    top: 3vh;
+    width: 30vw;
+    display: flex;
+    justify-content: space-evenly;
+
+    .signUp {
+      @include btn($supportPrimaryColor, $primaryColor);
+    }
+
+    .signIn {
+      @include btn($supportSecondaryColor, lighten($supportSecondaryColor, 25%));
+    }
+
+    .modalOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      // width: 100%;
+      // height: 100%;
+      // background-color: rgba(30, 10, 64, .5);
+      // z-index: -1;
+      // backdrop-filter: blur(6px);
+      // transition-duration: 4s;
+
+      .accessModal {
+        // position: absolute;
+        // top: 15%;
+        // left: 30%;
+        // right: 30%;
+        // width: 40%;
+        // height: 70%;
+        // background-color: $bgColor;
+        // border: 2px solid $primaryColor;
+        // border-radius: 10px;
+        // z-index: 2;
+        // transform: scale(0);
+        // &:active {
+        //   transition-duration: 0.3s;
+        //   /* czas trwania animacji */
+        //   transform: scale(1.2);
+        //   /* nowy rozmiar elementu */
+        // }
+
+        // &.active {
+        //   transform: scale(1);
+        // }
+
+        &>i {
+          position: absolute;
+          top: -4vh;
+          right: -1.6vw;
+          font-size: 7rem;
+          color: $primaryColor;
+          transition-duration: .4s;
+
+          &:hover {
+            cursor: pointer;
+            color: $secondaryColor;
+          }
+        }
+
+        h3 {
+          color: $secondaryColor;
+          font-size: 8rem;
+          margin: 1rem;
+          font-family: $supportFont;
+          text-align: center;
+        }
+
+        form {
+          margin-top: 4rem;
+
+          label {
+            padding: 10px 4vw;
+            font-size: 3rem;
+
+            i {
+              margin-right: 2vh;
+            }
+          }
+
+          .input {
+            margin: 30px auto;
+            background: none;
+            border: none;
+            outline: none;
+            width: 80%;
+            padding: 10px 20px;
+            font-size: 2rem;
+            border-radius: 40px;
+            box-shadow: inset 0 -5px 10px lighten($darkColor, 10%);
+            color: $fontColor;
+            display: block;
+          }
+
+          .shadow__btn {
+            padding: 1rem 2rem;
+            border: none;
+            font-size: 3rem;
+            color: $fontColor;
+            border-radius: 7px;
+            letter-spacing: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: 0.5s;
+            transition-property: box-shadow;
+            background: $secondaryColor;
+            box-shadow: 0 0 25px $secondaryColor;
+            width: 40%;
+            margin: 10% 30%;
+            font-family: $textFont;
+
+            &:hover {
+              cursor: pointer;
+              box-shadow: 0 0 5px $secondaryColor,
+                0 0 25px $secondaryColor,
+                0 0 50px $secondaryColor,
+                0 0 100px $secondaryColor;
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  .header {
+    color: $fontColor;
+    font-size: 8rem;
+    font-family: $textFont;
+    height: 100vh;
+    width: 100vw;
+    padding-left: 5vw;
+    display: flex;
+    align-items: center;
+
+    .headerImageContainer {
+      width: 80%;
+      height: 100%;
+      background-color: lighten($bgColor, 20%);
+      background-image: url('./../img/landingHeader.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 100% 100%;
+      background-blend-mode: hard-light;
+    }
+  }
+
+  .socials {
+    position: absolute;
+    display: flex;
+    width: 15%;
+    justify-content: space-evenly;
+    left: 2vw;
+    bottom: 2vh;
+    font-size: 5rem;
+    color: $fontColor;
+
+    i {
+      transition-duration: .4s;
+
+      &:hover {
+        cursor: pointer;
+        transform: translateY(-10px);
+        color: $secondaryColor;
+      }
+    }
+  }
+
+}
